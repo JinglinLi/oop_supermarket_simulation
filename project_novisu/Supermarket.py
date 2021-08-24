@@ -49,16 +49,17 @@ class Supermarket:
             self.last_id += 1
 
 
-    def remove_exitsting_customers(self):
+    def remove_exiting_customers(self):
         """removes every customer that is not active any more."""
         self.customers=[c for c in self.customers if c.is_active()]
 
 
     def simulate(self, t_start, t_end):
+        """run supermarket simulation."""
         for t in pd.date_range(t_start, t_end, freq=T_RESOLUTION):
             self.set_time(t)
             self.add_new_customers()
-            self.remove_exitsting_customers()
+            self.remove_exiting_customers()
             self.next_minute()
             self.print_customers()
 

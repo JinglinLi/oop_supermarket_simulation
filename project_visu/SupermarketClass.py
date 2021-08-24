@@ -47,7 +47,7 @@ class Supermarket:
                 self.last_id += 1 # update last customer id
 
 
-    def remove_existing_customers(self):
+    def remove_exiting_customers(self):
         """removes every customer that is not active any more."""
         for one_customer in self.customers:
             if one_customer.is_active() is False:
@@ -88,6 +88,7 @@ class Supermarket:
 
 
     def simulate(self, t_start, t_end):
+        """run supermarket simulation."""
         for t in pd.date_range(t_start, t_end, freq=T_RESOLUTION):
             self.update_time(t)
             self.add_new_customers()
@@ -95,7 +96,7 @@ class Supermarket:
             self.draw_one_min()
             self.print_customers() # print : time, id, state
             print(self) # print : time and number of customers in supermarket
-            self.remove_existing_customers()
+            self.remove_exiting_customers()
         cv2.destroyAllWindows()
 
 
